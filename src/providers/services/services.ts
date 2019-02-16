@@ -26,4 +26,15 @@ export class ServicesProvider {
     });
   }
 
+  public get(route: string): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.get(route, this.options)
+      .subscribe((data) => {
+          resolve(data);
+        }, (error) => {
+          resolve(error);
+      });
+    });
+  }
+
 }

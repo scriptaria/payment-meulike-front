@@ -10,14 +10,24 @@ import { ServicesProvider } from "../../providers/services/services";
 export class HomePage {
 
   constructor(public navCtrl: NavController, public service: ServicesProvider) {
-    this.list();
+    this.forPost();
+    this.forGet();
   }
 
-  public list(): void {
+  public forPost(): void {
     this.service.post("http://api.meulike.com.br/test.php", {nome: "paulo"})
     .then((result) => {
       // tslint:disable-next-line:no-console
       console.log(result);
     });
   }
+
+  public forGet(): void {
+    this.service.get("http://api.meulike.com.br/test.php?name=paulo")
+    .then((result) => {
+      // tslint:disable-next-line:no-console
+      console.log(result);
+    });
+  }
+
 }
